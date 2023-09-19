@@ -19,11 +19,11 @@ from rest_framework.routers import DefaultRouter
 
 from xml_converter import views, api
 
-router = DefaultRouter()
-router.register('converter', api.ConverterViewSet, basename='converter')
+# router = DefaultRouter()
+# router.register('converter', api.ConverterViewSet, basename='converter')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('connected/', views.upload_page),
-    path('api/', include(router.urls)),
+    path('api/', include("xml_converter.urls")),
 ]
