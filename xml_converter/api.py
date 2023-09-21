@@ -8,7 +8,11 @@ class ConverterViewSet(ViewSet):
     # Note this is not a restful API
     # We still use DRF to assess how well you know the framework
     parser_classes = [MultiPartParser]
+    serializer_class = CreateXMLtoDictAPISerializer
 
     @action(methods=["POST"], detail=False, url_path="convert")
     def convert(self, request, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
         return Response({})
